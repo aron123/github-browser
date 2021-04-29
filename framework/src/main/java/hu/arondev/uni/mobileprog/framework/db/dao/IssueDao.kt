@@ -10,14 +10,11 @@ import retrofit2.http.Path
 interface IssueDao {
 
     @GET("repos/{owner}/{repo}/issues?state=all")
-    @Headers("Authorization: Basic " + BuildConfig.AUTH_TOKEN)
     suspend fun getIssuesOfRepo(@Path("owner") owner: String, @Path("repo") repo: String): List<IssueEntity>
 
     @GET("repos/{owner}/{repo}/issues/{id}")
-    @Headers("Authorization: Basic " + BuildConfig.AUTH_TOKEN)
     suspend fun getOneIssueOfRepo(@Path("owner") owner: String, @Path("repo") repo: String, @Path("id") id: Int): IssueEntity
 
     @GET("repos/{owner}/{repo}/issues/{id}/comments")
-    @Headers("Authorization: Basic " + BuildConfig.AUTH_TOKEN)
     suspend fun getCommentsOfIssue(@Path("owner") owner: String, @Path("repo") repo: String, @Path("id") id: Int): List<IssueCommentEntity>
 }

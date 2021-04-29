@@ -6,7 +6,6 @@ import android.util.Log
 import hu.arondev.uni.mobileprog.core.data.IssueRepository
 import hu.arondev.uni.mobileprog.core.data.RepoRepository
 import hu.arondev.uni.mobileprog.core.data.UserRepository
-import hu.arondev.uni.mobileprog.framework.BuildConfig.AUTH_TOKEN
 import hu.arondev.uni.mobileprog.framework.db.datasource.IssueHttpDataSource
 import hu.arondev.uni.mobileprog.framework.db.datasource.RepoHttpDataSource
 import hu.arondev.uni.mobileprog.framework.db.datasource.UserHttpDataSource

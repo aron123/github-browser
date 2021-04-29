@@ -1,6 +1,7 @@
 package hu.arondev.uni.mobileprog.framework.db
 
 import android.content.Context
+import hu.arondev.uni.mobileprog.framework.BuildConfig
 import hu.arondev.uni.mobileprog.framework.db.dao.IssueDao
 import hu.arondev.uni.mobileprog.framework.db.dao.RepoDao
 import hu.arondev.uni.mobileprog.framework.db.dao.UserDao
@@ -13,6 +14,7 @@ class GithubApiClient (private val client: Retrofit) {
 
         private fun create (context: Context): GithubApiClient = GithubApiClient(
             Retrofit.Builder()
+                .client(AuthClient.getInstance(BuildConfig.AUTH_TOKEN))
                 .baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

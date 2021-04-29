@@ -10,10 +10,8 @@ import retrofit2.http.Query
 
 interface RepoDao {
     @GET("search/repositories")
-    @Headers("Authorization: Basic " + BuildConfig.AUTH_TOKEN)
     suspend fun searchReposByName(@Query("q") repoName: String, @Query("per_page") perPage: Int): RepoSearchEntity
 
     @GET("repos/{owner}/{repo}")
-    @Headers("Authorization: Basic " + BuildConfig.AUTH_TOKEN)
     suspend fun getRepoByFullName(@Path("owner") owner: String, @Path("repo") repo: String): RepoEntity
 }
