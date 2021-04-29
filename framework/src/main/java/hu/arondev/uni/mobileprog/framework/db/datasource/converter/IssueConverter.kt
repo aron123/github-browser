@@ -1,4 +1,4 @@
-package hu.arondev.uni.mobileprog.framework.db.dao.converter
+package hu.arondev.uni.mobileprog.framework.db.datasource.converter
 
 import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.core.domain.Owner

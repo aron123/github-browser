@@ -4,7 +4,7 @@ import android.content.Context
 import hu.arondev.uni.mobileprog.core.data.RepoDataSource
 import hu.arondev.uni.mobileprog.core.domain.Repo
 import hu.arondev.uni.mobileprog.framework.db.GithubApiClient
-import hu.arondev.uni.mobileprog.framework.db.dao.converter.RepoConverter
+import hu.arondev.uni.mobileprog.framework.db.datasource.converter.RepoConverter
 import org.mapstruct.factory.Mappers
 
 class RepoHttpDataSource(context: Context): RepoDataSource {

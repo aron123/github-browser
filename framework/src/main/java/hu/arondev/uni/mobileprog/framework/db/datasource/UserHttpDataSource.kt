@@ -4,7 +4,7 @@ import android.content.Context
 import hu.arondev.uni.mobileprog.core.data.UserDataSource
 import hu.arondev.uni.mobileprog.core.domain.User
 import hu.arondev.uni.mobileprog.framework.db.GithubApiClient
-import hu.arondev.uni.mobileprog.framework.db.dao.converter.UserConverter
+import hu.arondev.uni.mobileprog.framework.db.datasource.converter.UserConverter
 import org.mapstruct.factory.Mappers
 
 class UserHttpDataSource(context: Context) : UserDataSource {

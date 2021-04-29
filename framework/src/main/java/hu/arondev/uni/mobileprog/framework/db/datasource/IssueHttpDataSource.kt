@@ -6,8 +6,8 @@ import hu.arondev.uni.mobileprog.core.data.IssueDataSource
 import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.core.domain.IssueComment
 import hu.arondev.uni.mobileprog.framework.db.GithubApiClient
-import hu.arondev.uni.mobileprog.framework.db.dao.converter.IssueCommentConverter
-import hu.arondev.uni.mobileprog.framework.db.dao.converter.IssueConverter
+import hu.arondev.uni.mobileprog.framework.db.datasource.converter.IssueCommentConverter
+import hu.arondev.uni.mobileprog.framework.db.datasource.converter.IssueConverter
 import org.mapstruct.factory.Mappers
 
 class IssueHttpDataSource(context: Context) : IssueDataSource {
