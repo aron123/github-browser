@@ -1,13 +1,12 @@
-package hu.arondev.uni.mobileprog.framework.db.datasource
+package hu.arondev.uni.mobileprog.framework.rest.datasource
 
 import android.content.Context
-import android.util.Log
 import hu.arondev.uni.mobileprog.core.data.IssueDataSource
 import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.core.domain.IssueComment
-import hu.arondev.uni.mobileprog.framework.db.GithubApiClient
-import hu.arondev.uni.mobileprog.framework.db.datasource.converter.IssueCommentConverter
-import hu.arondev.uni.mobileprog.framework.db.datasource.converter.IssueConverter
+import hu.arondev.uni.mobileprog.framework.rest.GithubApiClient
+import hu.arondev.uni.mobileprog.framework.rest.datasource.converter.IssueCommentConverter
+import hu.arondev.uni.mobileprog.framework.rest.datasource.converter.IssueConverter
 import org.mapstruct.factory.Mappers
 
 class IssueHttpDataSource(context: Context) : IssueDataSource {

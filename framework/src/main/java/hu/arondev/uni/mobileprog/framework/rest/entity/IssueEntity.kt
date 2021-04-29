@@ -1,4 +1,4 @@
-package hu.arondev.uni.mobileprog.framework.db.entity
+package hu.arondev.uni.mobileprog.framework.rest.entity
 
 data class IssueEntity(
     val active_lock_reason: String = "",

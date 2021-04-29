@@ -1,8 +1,7 @@
-package hu.arondev.uni.mobileprog.framework.db.dao
+package hu.arondev.uni.mobileprog.framework.rest.dao
 
-import hu.arondev.uni.mobileprog.framework.BuildConfig
-import hu.arondev.uni.mobileprog.framework.db.entity.UserEntity
-import hu.arondev.uni.mobileprog.framework.db.entity.UserSearchEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.UserEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.UserSearchEntity
 import retrofit2.http.*
 
 interface UserDao {

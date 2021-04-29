@@ -1,10 +1,10 @@
-package hu.arondev.uni.mobileprog.framework.db.datasource
+package hu.arondev.uni.mobileprog.framework.rest.datasource
 
 import android.content.Context
 import hu.arondev.uni.mobileprog.core.data.UserDataSource
 import hu.arondev.uni.mobileprog.core.domain.User
-import hu.arondev.uni.mobileprog.framework.db.GithubApiClient
-import hu.arondev.uni.mobileprog.framework.db.datasource.converter.UserConverter
+import hu.arondev.uni.mobileprog.framework.rest.GithubApiClient
+import hu.arondev.uni.mobileprog.framework.rest.datasource.converter.UserConverter
 import org.mapstruct.factory.Mappers
 
 class UserHttpDataSource(context: Context) : UserDataSource {

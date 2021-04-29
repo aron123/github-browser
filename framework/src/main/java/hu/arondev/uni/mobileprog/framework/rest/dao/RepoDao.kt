@@ -1,10 +1,8 @@
-package hu.arondev.uni.mobileprog.framework.db.dao
+package hu.arondev.uni.mobileprog.framework.rest.dao
 
-import hu.arondev.uni.mobileprog.framework.BuildConfig
-import hu.arondev.uni.mobileprog.framework.db.entity.RepoEntity
-import hu.arondev.uni.mobileprog.framework.db.entity.RepoSearchEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.RepoEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.RepoSearchEntity
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 

@@ -1,10 +1,10 @@
-package hu.arondev.uni.mobileprog.framework.db
+package hu.arondev.uni.mobileprog.framework.rest
 
 import android.content.Context
 import hu.arondev.uni.mobileprog.framework.BuildConfig
-import hu.arondev.uni.mobileprog.framework.db.dao.IssueDao
-import hu.arondev.uni.mobileprog.framework.db.dao.RepoDao
-import hu.arondev.uni.mobileprog.framework.db.dao.UserDao
+import hu.arondev.uni.mobileprog.framework.rest.dao.IssueDao
+import hu.arondev.uni.mobileprog.framework.rest.dao.RepoDao
+import hu.arondev.uni.mobileprog.framework.rest.dao.UserDao
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

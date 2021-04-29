@@ -1,10 +1,8 @@
-package hu.arondev.uni.mobileprog.framework.db.dao
+package hu.arondev.uni.mobileprog.framework.rest.dao
 
-import hu.arondev.uni.mobileprog.framework.BuildConfig
-import hu.arondev.uni.mobileprog.framework.db.entity.IssueCommentEntity
-import hu.arondev.uni.mobileprog.framework.db.entity.IssueEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.IssueCommentEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.IssueEntity
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface IssueDao {

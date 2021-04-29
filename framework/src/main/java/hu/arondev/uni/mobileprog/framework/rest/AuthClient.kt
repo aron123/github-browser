@@ -1,4 +1,4 @@
-package hu.arondev.uni.mobileprog.framework.db
+package hu.arondev.uni.mobileprog.framework.rest
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

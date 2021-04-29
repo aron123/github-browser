@@ -1,9 +1,9 @@
-package hu.arondev.uni.mobileprog.framework.db.datasource.converter
+package hu.arondev.uni.mobileprog.framework.rest.datasource.converter
 
 import hu.arondev.uni.mobileprog.core.domain.Owner
 import hu.arondev.uni.mobileprog.core.domain.Repo
-import hu.arondev.uni.mobileprog.framework.db.entity.OwnerEntity
-import hu.arondev.uni.mobileprog.framework.db.entity.RepoEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.OwnerEntity
+import hu.arondev.uni.mobileprog.framework.rest.entity.RepoEntity
 import org.mapstruct.Mapper
 
 @Mapper
