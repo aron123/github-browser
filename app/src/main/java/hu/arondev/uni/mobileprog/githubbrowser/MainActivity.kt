@@ -6,9 +6,9 @@ import android.util.Log
 import hu.arondev.uni.mobileprog.core.data.IssueRepository
 import hu.arondev.uni.mobileprog.core.data.RepoRepository
 import hu.arondev.uni.mobileprog.core.data.UserRepository
-import hu.arondev.uni.mobileprog.framework.db.datasource.IssueHttpDataSource
-import hu.arondev.uni.mobileprog.framework.db.datasource.RepoHttpDataSource
-import hu.arondev.uni.mobileprog.framework.db.datasource.UserHttpDataSource
+import hu.arondev.uni.mobileprog.framework.rest.datasource.IssueHttpDataSource
+import hu.arondev.uni.mobileprog.framework.rest.datasource.RepoHttpDataSource
+import hu.arondev.uni.mobileprog.framework.rest.datasource.UserHttpDataSource
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
