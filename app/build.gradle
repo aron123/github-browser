@@ -50,6 +50,7 @@ dependencies {
     implementation applicationDependencies.appcompat
     implementation applicationDependencies.material
     implementation applicationDependencies.glide
+    implementation applicationDependencies.retrofit
 
     implementation project(':core')
     implementation project(':framework')

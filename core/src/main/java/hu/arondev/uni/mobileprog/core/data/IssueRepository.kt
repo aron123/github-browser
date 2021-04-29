@@ -4,7 +4,7 @@ import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.core.domain.IssueComment
 
 class IssueRepository(private val issueDataSource: IssueDataSource) {
-    suspend fun getIssuesOfRepo(repoFullName: String): List<Issue> = issueDataSource.getIssuesOfRepo(repoFullName)
-    suspend fun getOneIssueOfRepo(repoFullName: String, id: Int): Issue = issueDataSource.getOneIssueOfRepo(repoFullName, id)
-    suspend fun getCommentsOfIssue(repoFullName: String, id: Int): List<IssueComment> = issueDataSource.getCommentsOfIssue(repoFullName, id)
+    suspend fun getIssuesOfRepo(owner: String, repo: String): List<Issue> = issueDataSource.getIssuesOfRepo(owner, repo)
+    suspend fun getOneIssueOfRepo(owner: String, repo: String, id: Int): Issue = issueDataSource.getOneIssueOfRepo(owner, repo, id)
+    suspend fun getCommentsOfIssue(owner: String, repo: String, id: Int): List<IssueComment> = issueDataSource.getCommentsOfIssue(owner, repo, id)
 }

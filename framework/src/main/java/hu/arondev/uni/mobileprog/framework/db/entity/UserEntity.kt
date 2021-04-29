@@ -2,11 +2,11 @@ package hu.arondev.uni.mobileprog.framework.db.entity
 
 data class UserEntity(
     val avatar_url: String = "",
-    val bio: Any = Any(),
+    val bio: String? = "",
     val blog: String = "",
     val company: String = "",
     val created_at: String = "",
-    val email: Any = Any(),
+    val email: String? = "",
     val events_url: String = "",
     val followers: Int = 0,
     val followers_url: String = "",
@@ -29,7 +29,7 @@ data class UserEntity(
     val site_admin: Boolean = false,
     val starred_url: String = "",
     val subscriptions_url: String = "",
-    val twitter_username: Any = Any(),
+    val twitter_username: String? = "",
     val type: String = "",
     val updated_at: String = "",
     val url: String = ""

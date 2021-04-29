@@ -1,15 +1,13 @@
 package hu.arondev.uni.mobileprog.core.domain
 
 data class IssueComment(
-    val author_association: String = "",
-    val body: String = "",
-    val created_at: String = "",
-    val html_url: String = "",
-    val id: Int = 0,
-    val issue_url: String = "",
-    val node_id: String = "",
-    val performed_via_github_app: Any = Any(),
-    val updated_at: String = "",
-    val url: String = "",
-    val user: Owner = Owner()
+    var author_association: String = "",
+    var body: String = "",
+    var created_at: String = "",
+    var html_url: String = "",
+    var id: Int = 0,
+    var issue_url: String = "",
+    var updated_at: String = "",
+    var url: String = "",
+    var user: Owner = Owner()
 )
