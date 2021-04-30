@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GitHub Browser</string>
+    <string name="menu_profile">My Profile</string>
+    <string name="menu_user">Search users</string>
+    <string name="menu_repo">Search repos</string>
+    <string name="navigation_drawer_open">Open navigation</string>
+    <string name="navigation_drawer_close">Close navigation</string>
+    <string name="user_default_username">Loading username …</string>
+    <string name="user_default_organization">Loading organization …</string>
 </resources>
