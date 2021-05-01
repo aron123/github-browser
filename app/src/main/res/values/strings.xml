@@ -5,6 +5,7 @@
     <string name="menu_repo">Search repos</string>
     <string name="navigation_drawer_open">Open navigation</string>
     <string name="navigation_drawer_close">Close navigation</string>
-    <string name="user_default_username">Loading username …</string>
-    <string name="user_default_organization">Loading organization …</string>
+    <string name="user_profile_picture_desc">Profile picture</string>
+    <string name="default_username">Username</string>
+    <string name="default_organization">Organization</string>
 </resources>

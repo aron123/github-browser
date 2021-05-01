@@ -1,6 +1,7 @@
 package hu.arondev.uni.mobileprog.githubbrowser
 
 import android.app.Application
+import android.util.Log
 import hu.arondev.uni.mobileprog.core.data.IssueRepository
 import hu.arondev.uni.mobileprog.core.data.RepoRepository
 import hu.arondev.uni.mobileprog.core.data.UserRepository

@@ -2,31 +2,33 @@ package hu.arondev.uni.mobileprog.githubbrowser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
-import hu.arondev.uni.mobileprog.core.data.IssueRepository
-import hu.arondev.uni.mobileprog.core.data.RepoRepository
-import hu.arondev.uni.mobileprog.core.data.UserRepository
-import hu.arondev.uni.mobileprog.framework.rest.datasource.IssueHttpDataSource
-import hu.arondev.uni.mobileprog.framework.rest.datasource.RepoHttpDataSource
-import hu.arondev.uni.mobileprog.framework.rest.datasource.UserHttpDataSource
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.CornerSize
+import com.squareup.picasso.Picasso
 import hu.arondev.uni.mobileprog.githubbrowser.repo.search.RepoSearchFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.page.UserPageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.search.UserSearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var viewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this, GitHubViewModelFactory)
+            .get(MainViewModel::class.java)
         setContentView(R.layout.activity_main)
 
         val toolbar: Toolbar = findViewById(R.id.app_toolbar)
@@ -34,10 +36,33 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
+        viewModel.currentUser.observe(this, { user ->
+            val navView = findViewById<NavigationView>(R.id.nav_view)
+            val navHeaderView = LayoutInflater.from(this)
+                .inflate(R.layout.nav_header_main, null)
+            navHeaderView.findViewById<TextView>(R.id.username).text = user.login
+            navHeaderView.findViewById<TextView>(R.id.organization).text = user.company
+
+            val profileImageView = navHeaderView.findViewById<ShapeableImageView>(R.id.profile_picture)
+
+            Picasso.get()
+                .load(user.avatar_url)
+                .placeholder(R.mipmap.ic_splash_round)
+                .error(R.mipmap.ic_splash_round)
+                .into(profileImageView)
+
+            profileImageView.shapeAppearanceModel.toBuilder()
+                .setAllCorners(CornerFamily.ROUNDED, resources.getDimension(R.dimen.nav_profile_pic_radius))
+                .build().also { profileImageView.shapeAppearanceModel = it }
+
+            navView.addHeaderView(navHeaderView)
+            viewModel.currentUser.removeObservers(this)
+        })
+        viewModel.getCurrentUser()
 
         nav_view.setNavigationItemSelectedListener(this)
 

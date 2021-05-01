@@ -51,6 +51,7 @@ dependencies {
     implementation applicationDependencies.material
     implementation applicationDependencies.glide
     implementation applicationDependencies.retrofit
+    implementation applicationDependencies.picasso
 
     implementation project(':core')
     implementation project(':framework')
