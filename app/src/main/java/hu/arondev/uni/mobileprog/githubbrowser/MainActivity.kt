@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -14,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.CornerSize
 import com.squareup.picasso.Picasso
 import hu.arondev.uni.mobileprog.githubbrowser.repo.search.RepoSearchFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.page.UserPageFragment
@@ -27,38 +25,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this, GitHubViewModelFactory)
-            .get(MainViewModel::class.java)
         setContentView(R.layout.activity_main)
+        viewModel = ViewModelProvider(this, GitHubViewModelFactory).get(MainViewModel::class.java)
 
         val toolbar: Toolbar = findViewById(R.id.app_toolbar)
         setSupportActionBar(toolbar)
 
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar,
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        val navHeaderView = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null)
+        val profileImageView = navHeaderView.findViewById<ShapeableImageView>(R.id.profile_picture)
+        profileImageView.shapeAppearanceModel.toBuilder()
+                .setAllCorners(CornerFamily.ROUNDED, resources.getDimension(R.dimen.nav_profile_pic_radius))
+                .build().also { profileImageView.shapeAppearanceModel = it }
+
         viewModel.currentUser.observe(this, { user ->
-            val navView = findViewById<NavigationView>(R.id.nav_view)
-            val navHeaderView = LayoutInflater.from(this)
-                .inflate(R.layout.nav_header_main, null)
             navHeaderView.findViewById<TextView>(R.id.username).text = user.login
             navHeaderView.findViewById<TextView>(R.id.organization).text = user.company
-
-            val profileImageView = navHeaderView.findViewById<ShapeableImageView>(R.id.profile_picture)
-
             Picasso.get()
                 .load(user.avatar_url)
                 .placeholder(R.mipmap.ic_splash_round)
                 .error(R.mipmap.ic_splash_round)
                 .into(profileImageView)
-
-            profileImageView.shapeAppearanceModel.toBuilder()
-                .setAllCorners(CornerFamily.ROUNDED, resources.getDimension(R.dimen.nav_profile_pic_radius))
-                .build().also { profileImageView.shapeAppearanceModel = it }
-
             navView.addHeaderView(navHeaderView)
             viewModel.currentUser.removeObservers(this)
         })
@@ -76,7 +68,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_profile -> supportFragmentManager.beginTransaction()
                 .replace(R.id.content, UserPageFragment.newInstance())
-                // TODO: load current user (MainActivityDelegate)
+                // TODO: load current user: https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
                 .commit()
             R.id.nav_user -> supportFragmentManager.beginTransaction()
                 .replace(R.id.content, UserSearchFragment.newInstance())

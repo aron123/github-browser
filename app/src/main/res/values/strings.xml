@@ -8,4 +8,24 @@
     <string name="user_profile_picture_desc">Profile picture</string>
     <string name="default_username">Username</string>
     <string name="default_organization">Organization</string>
+    <string name="user_load_error">Can not load user info.</string>
+    <string name="default_bio">Bio</string>
+    <string name="default_location">Location</string>
+    <string name="user_hierable">Hireable!</string>
+    <string name="default_real_name">(Real Name)</string>
+    <string name="default_followers">0 followers</string>
+    <string name="default_followings">0 followings</string>
+    <string name="default_public_repositories">0 public repositories</string>
+    <plurals name="profile_page_public_repositories">
+        <item quantity="one">%d public repository</item>
+        <item quantity="other">%d public repositories</item>
+    </plurals>
+    <plurals name="profile_page_followers">
+        <item quantity="one">%d follower</item>
+        <item quantity="other">%d followers</item>
+    </plurals>
+    <plurals name="profile_page_following">
+        <item quantity="one">%d following</item>
+        <item quantity="other">%d followings</item>
+    </plurals>
 </resources>
