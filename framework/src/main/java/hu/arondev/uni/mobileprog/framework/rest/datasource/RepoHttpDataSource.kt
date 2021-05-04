@@ -16,4 +16,7 @@ class RepoHttpDataSource(context: Context): RepoDataSource {
 
     override suspend fun getOneRepositoryByFullName(owner: String, repo: String): Repo
         = repoConverter.convertToDomain(repoDao.getRepoByFullName(owner, repo))
+
+    override suspend fun getReposOfUser(user: String): List<Repo>
+        = repoConverter.convertToDomain(repoDao.getReposOfUser(user))
 }

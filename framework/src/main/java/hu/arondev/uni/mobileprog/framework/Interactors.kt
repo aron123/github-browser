@@ -5,6 +5,7 @@ import hu.arondev.uni.mobileprog.core.interactor.*
 data class Interactors(
     val searchReposByName: SearchReposByName,
     val getOneRepositoryByFullName: GetRepositoryByFullName,
+    val getReposOfUser: GetReposOfUser,
     val searchUsers: SearchUsers,
     val getCurrentUser: GetCurrentUser,
     val getOneUser: GetOneUser,

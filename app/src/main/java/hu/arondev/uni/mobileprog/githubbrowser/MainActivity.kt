@@ -14,12 +14,14 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.shape.CornerFamily
 import com.squareup.picasso.Picasso
+import hu.arondev.uni.mobileprog.githubbrowser.repo.page.RepoPageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.repo.search.RepoSearchFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.page.UserPageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.search.UserSearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+        MainActivityDelegate {
 
     private lateinit var viewModel: MainViewModel
 
@@ -68,7 +70,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_profile -> supportFragmentManager.beginTransaction()
                 .replace(R.id.content, UserPageFragment.newInstance())
-                // TODO: load current user: https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
                 .commit()
             R.id.nav_user -> supportFragmentManager.beginTransaction()
                 .replace(R.id.content, UserSearchFragment.newInstance())
@@ -81,5 +82,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun openRepositoryPage(user: String, repo: String) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, RepoPageFragment.newInstance(user, repo))
+            .commit()
+    }
+
+    override fun openUserPage(user: String) {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.content, UserPageFragment.newInstance(user))
+                .commit()
     }
 }

@@ -12,4 +12,7 @@ interface RepoDao {
 
     @GET("repos/{owner}/{repo}")
     suspend fun getRepoByFullName(@Path("owner") owner: String, @Path("repo") repo: String): RepoEntity
+
+    @GET("users/{user}/repos?sort=updated")
+    suspend fun getReposOfUser(@Path("user") user: String): List<RepoEntity>
 }

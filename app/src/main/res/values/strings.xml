@@ -9,6 +9,7 @@
     <string name="default_username">Username</string>
     <string name="default_organization">Organization</string>
     <string name="user_load_error">Can not load user info.</string>
+    <string name="repo_load_error">Can not load repo info.</string>
     <string name="default_bio">Bio</string>
     <string name="default_location">Location</string>
     <string name="user_hierable">Hireable!</string>
@@ -16,6 +17,12 @@
     <string name="default_followers">0 followers</string>
     <string name="default_followings">0 followings</string>
     <string name="default_public_repositories">0 public repositories</string>
+    <string name="default_repository_name">Repository name</string>
+    <string name="default_repository_description">Repository description</string>
+    <string name="default_language">Language</string>
+    <string name="updated_at">Updated %s</string>
+    <string name="owner_repo_separator">/</string>
+    <string name="following_button_content_desc">Following button</string>
     <plurals name="profile_page_public_repositories">
         <item quantity="one">%d public repository</item>
         <item quantity="other">%d public repositories</item>

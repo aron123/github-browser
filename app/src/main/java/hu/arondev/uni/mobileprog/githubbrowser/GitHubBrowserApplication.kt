@@ -24,6 +24,7 @@ class GitHubBrowserApplication : Application() {
             Interactors(
                 SearchReposByName(repoRepository),
                 GetRepositoryByFullName(repoRepository),
+                GetReposOfUser(repoRepository),
                 SearchUsers(userRepository),
                 GetCurrentUser(userRepository),
                 GetOneUser(userRepository),
