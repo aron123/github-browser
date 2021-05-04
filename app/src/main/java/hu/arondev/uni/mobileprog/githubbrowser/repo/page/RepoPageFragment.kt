@@ -71,6 +71,7 @@ class RepoPageFragment : Fragment() {
             repo_name.text = repo.name
             repo_owner.text = repo.owner.login
             repo_desc.text = repo.description
+            repo_language.text = repo.language
         })
 
         viewModel.fileList.observe(this, { files ->

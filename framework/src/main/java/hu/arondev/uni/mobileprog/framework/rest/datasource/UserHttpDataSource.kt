@@ -11,8 +11,8 @@ class UserHttpDataSource(context: Context) : UserDataSource {
     private val userDao = GithubApiClient.getInstance(context).userDao()
     private val userConverter = Mappers.getMapper(UserConverter::class.java)
 
-    override suspend fun searchUsersByUsername(username: String): List<User>
-        = userConverter.convertToDomain(userDao.searchUsers(username).items)
+    override suspend fun searchUsersByUsername(username: String, perPage: Int): List<User>
+        = userConverter.convertToDomain(userDao.searchUsers(username, perPage).items)
 
     override suspend fun getCurrentUser(): User = userConverter.convertToDomain(userDao.getCurrentUser())
 

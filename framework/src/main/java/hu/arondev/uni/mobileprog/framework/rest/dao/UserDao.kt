@@ -6,7 +6,7 @@ import retrofit2.http.*
 
 interface UserDao {
     @GET("search/users")
-    suspend fun searchUsers(@Query("q") username: String): UserSearchEntity
+    suspend fun searchUsers(@Query("q") username: String, @Query("per_page") perPage: Int): UserSearchEntity
 
     @GET("users/{username}")
     suspend fun getOneUser(@Path("username") username: String): UserEntity

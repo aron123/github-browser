@@ -1,11 +1,13 @@
 package hu.arondev.uni.mobileprog.githubbrowser
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -19,6 +21,7 @@ import hu.arondev.uni.mobileprog.githubbrowser.repo.search.RepoSearchFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.page.UserPageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.search.UserSearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
         MainActivityDelegate {
@@ -49,10 +52,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navHeaderView.findViewById<TextView>(R.id.username).text = user.login
             navHeaderView.findViewById<TextView>(R.id.organization).text = user.company
             Picasso.get()
-                .load(user.avatar_url)
-                .placeholder(R.mipmap.ic_splash_round)
-                .error(R.mipmap.ic_splash_round)
-                .into(profileImageView)
+                    .load(user.avatar_url)
+                    .placeholder(R.mipmap.ic_splash_round)
+                    .error(R.mipmap.ic_splash_round)
+                    .into(profileImageView)
             navView.addHeaderView(navHeaderView)
             viewModel.currentUser.removeObservers(this)
         })
@@ -69,14 +72,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_profile -> supportFragmentManager.beginTransaction()
-                .replace(R.id.content, UserPageFragment.newInstance())
-                .commit()
+                    .replace(R.id.content, UserPageFragment.newInstance())
+                    .commit()
             R.id.nav_user -> supportFragmentManager.beginTransaction()
-                .replace(R.id.content, UserSearchFragment.newInstance())
-                .commit()
+                    .replace(R.id.content, UserSearchFragment.newInstance())
+                    .commit()
             R.id.nav_repo -> supportFragmentManager.beginTransaction()
-                .replace(R.id.content, RepoSearchFragment.newInstance())
-                .commit()
+                    .replace(R.id.content, RepoSearchFragment.newInstance())
+                    .commit()
         }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -94,5 +97,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction()
                 .replace(R.id.content, UserPageFragment.newInstance(user))
                 .commit()
+    }
+
+    override fun hideKeyboard() {
+        val imm: InputMethodManager = this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = this.currentFocus
+        if (view == null) {
+            view = View(this)
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
     }
 }
