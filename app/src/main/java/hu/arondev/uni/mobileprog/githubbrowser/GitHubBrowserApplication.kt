@@ -25,6 +25,7 @@ class GitHubBrowserApplication : Application() {
                 SearchReposByName(repoRepository),
                 GetRepositoryByFullName(repoRepository),
                 GetReposOfUser(repoRepository),
+                GetFilesOfRepo(repoRepository),
                 SearchUsers(userRepository),
                 GetCurrentUser(userRepository),
                 GetOneUser(userRepository),

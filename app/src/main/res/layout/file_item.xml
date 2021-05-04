@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/repo_file_dir_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        app:srcCompat="@drawable/ic_file" />
+
+    <TextView
+        android:id="@+id/repo_filename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/repo_file_dir_icon"
+        android:text="@string/default_filename"/>
+
+    <TextView
+        android:id="@+id/repo_filesize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:layout_below="@+id/repo_filename"
+        android:layout_toEndOf="@+id/repo_file_dir_icon"
+        android:text="@string/default_filesize" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/repo_filesize"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorPrimary"
+        />
+</RelativeLayout>

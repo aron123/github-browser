@@ -23,6 +23,11 @@
     <string name="updated_at">Updated %s</string>
     <string name="owner_repo_separator">/</string>
     <string name="following_button_content_desc">Following button</string>
+    <string name="follow_repo_icon_description">Follow repo icon</string>
+    <string name="default_filename">filename.txt</string>
+    <string name="default_filesize">1 MB</string>
+    <string name="default_open_issues">0 open issues</string>
+    <string name="default_forks">0 forks</string>
     <plurals name="profile_page_public_repositories">
         <item quantity="one">%d public repository</item>
         <item quantity="other">%d public repositories</item>
@@ -34,5 +39,13 @@
     <plurals name="profile_page_following">
         <item quantity="one">%d following</item>
         <item quantity="other">%d followings</item>
+    </plurals>
+    <plurals name="repo_page_open_issues">
+        <item quantity="one">%d open issue</item>
+        <item quantity="other">%d open issues</item>
+    </plurals>
+    <plurals name="repo_page_forks">
+        <item quantity="one">%d fork</item>
+        <item quantity="other">%d forks</item>
     </plurals>
 </resources>

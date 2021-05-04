@@ -3,6 +3,7 @@ package hu.arondev.uni.mobileprog.githubbrowser.repo.page
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
 import hu.arondev.uni.mobileprog.githubbrowser.R
 import kotlinx.android.synthetic.main.repo_page_fragment.*
+import retrofit2.HttpException
 import java.lang.ClassCastException
 
 class RepoPageFragment : Fragment() {
@@ -70,7 +72,18 @@ class RepoPageFragment : Fragment() {
             repo_owner.text = repo.owner.login
             repo_desc.text = repo.description
         })
+
+        viewModel.fileList.observe(this, { files ->
+            val fileAdapter = FileAdapter(files) { file ->
+                if (file.type == "dir") {
+                    viewModel.loadRepoFiles(username, repo, file.path)
+                }
+            }
+            repo_page_files_recyclerview.adapter = fileAdapter
+        })
+
         viewModel.loadRepo(username, repo)
+        viewModel.loadRepoFiles(username, repo)
 
         repo_owner.setOnClickListener {
             mainActivityDelegate.openUserPage(username)

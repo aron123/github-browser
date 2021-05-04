@@ -6,6 +6,7 @@ data class Interactors(
     val searchReposByName: SearchReposByName,
     val getOneRepositoryByFullName: GetRepositoryByFullName,
     val getReposOfUser: GetReposOfUser,
+    val getFilesOfRepo: GetFilesOfRepo,
     val searchUsers: SearchUsers,
     val getCurrentUser: GetCurrentUser,
     val getOneUser: GetOneUser,
