@@ -30,6 +30,7 @@
     <string name="default_forks">0 forks</string>
     <string name="search_button_text">Search</string>
     <string name="username_search_hint">Search a username …</string>
+    <string name="repo_search_hint">Search a repository …</string>
     <plurals name="profile_page_public_repositories">
         <item quantity="one">%d public repository</item>
         <item quantity="other">%d public repositories</item>
