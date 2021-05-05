@@ -3,7 +3,6 @@ package hu.arondev.uni.mobileprog.githubbrowser.repo.page
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
 import hu.arondev.uni.mobileprog.githubbrowser.R
 import kotlinx.android.synthetic.main.repo_page_fragment.*
-import retrofit2.HttpException
 import java.lang.ClassCastException
 
 class RepoPageFragment : Fragment() {
@@ -60,9 +58,9 @@ class RepoPageFragment : Fragment() {
         viewModel = ViewModelProvider(this, GitHubViewModelFactory).get(RepoPageViewModel::class.java)
 
         val username = arguments?.getString(ArgumentKeys.USERNAME.toString())
-        val repo = arguments?.getString(ArgumentKeys.REPONAME.toString())
+        val repoName = arguments?.getString(ArgumentKeys.REPONAME.toString())
 
-        if (username == null || repo == null) {
+        if (username == null || repoName == null) {
             Snackbar.make(view!!, R.string.repo_load_error, Snackbar.LENGTH_LONG)
             return
         }
@@ -77,17 +75,29 @@ class RepoPageFragment : Fragment() {
         viewModel.fileList.observe(this, { files ->
             val fileAdapter = FileAdapter(files) { file ->
                 if (file.type == "dir") {
-                    viewModel.loadRepoFiles(username, repo, file.path)
+                    viewModel.loadRepoFiles(username, repoName, file.path)
                 }
             }
             repo_page_files_recyclerview.adapter = fileAdapter
         })
 
-        viewModel.loadRepo(username, repo)
-        viewModel.loadRepoFiles(username, repo)
+        viewModel.isRepoStarred.observe(this) { starred ->
+            repo_page_follow_ic.setImageResource(
+                    if (starred) R.drawable.ic_star_filled else R.drawable.ic_star_outline
+            )
+        }
 
-        repo_owner.setOnClickListener {
-            mainActivityDelegate.openUserPage(username)
+        viewModel.loadRepo(username, repoName)
+        viewModel.loadRepoFiles(username, repoName)
+        viewModel.loadIsRepoStarred(username, repoName)
+
+        repo_owner.setOnClickListener { mainActivityDelegate.openUserPage(username) }
+        repo_page_follow_ic.setOnClickListener {
+            if (viewModel.isRepoStarred.value == true) {
+                viewModel.unstarRepo(username, repoName)
+            } else {
+                viewModel.starRepo(username, repoName)
+            }
         }
     }
 }

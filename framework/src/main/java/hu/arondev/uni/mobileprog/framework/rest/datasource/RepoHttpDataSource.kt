@@ -7,7 +7,9 @@ import hu.arondev.uni.mobileprog.core.domain.Repo
 import hu.arondev.uni.mobileprog.framework.rest.GithubApiClient
 import hu.arondev.uni.mobileprog.framework.rest.datasource.converter.FileConverter
 import hu.arondev.uni.mobileprog.framework.rest.datasource.converter.RepoConverter
+import hu.arondev.uni.mobileprog.framework.rest.datasource.exception.ResourceNotFoundException
 import org.mapstruct.factory.Mappers
+import retrofit2.HttpException
 
 class RepoHttpDataSource(context: Context): RepoDataSource {
     private val repoDao = GithubApiClient.getInstance(context).repoDao()
@@ -27,5 +29,24 @@ class RepoHttpDataSource(context: Context): RepoDataSource {
         val fileEntities = repoDao.getFilesOfRepo(user, repoName, path)
         val files = fileConverter.convertToDomain(fileEntities)
         return files.sorted()
+    }
+
+    override suspend fun isRepoStarred(user: String, repo: String): Boolean {
+        val response = repoDao.isRepoStarred(user, repo)
+        return response.isSuccessful
+    }
+
+    override suspend fun starRepo(user: String, repo: String) {
+        val response = repoDao.starRepo(user, repo)
+        if (!response.isSuccessful) {
+            throw ResourceNotFoundException("Starring repo failed with code: ${response.code()}")
+        }
+    }
+
+    override suspend fun unstarRepo(user: String, repo: String) {
+        val response = repoDao.unstarRepo(user, repo)
+        if (!response.isSuccessful) {
+            throw ResourceNotFoundException("Unstarring repo failed with code: ${response.code()}")
+        }
     }
 }

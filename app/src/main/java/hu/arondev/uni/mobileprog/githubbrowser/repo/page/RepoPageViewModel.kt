@@ -16,6 +16,7 @@ class RepoPageViewModel(application: Application, interactors: Interactors)
     : GitHubViewModel(application, interactors) {
     val repo: MutableLiveData<Repo> = MutableLiveData()
     val fileList: MutableLiveData<List<File>> = MutableLiveData()
+    val isRepoStarred: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun loadRepo(username: String, repoName: String) {
         viewModelScope.launch {
@@ -40,6 +41,26 @@ class RepoPageViewModel(application: Application, interactors: Interactors)
             } catch (ex: HttpException) {
                 Log.e("REPO_PAGE_VIEWMODEL", ex.response().toString())
             }
+        }
+    }
+
+    fun loadIsRepoStarred(username: String, repoName: String) {
+        viewModelScope.launch {
+            isRepoStarred.value = interactors.isRepoStarred(username, repoName)
+        }
+    }
+
+    fun starRepo(username: String, repoName: String) {
+        viewModelScope.launch {
+            interactors.starRepo(username, repoName)
+            isRepoStarred.value = true
+        }
+    }
+
+    fun unstarRepo(username: String, repoName: String) {
+        viewModelScope.launch {
+            interactors.unstarRepo(username, repoName)
+            isRepoStarred.value = false
         }
     }
 }

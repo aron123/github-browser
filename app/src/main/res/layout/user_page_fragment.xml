@@ -40,16 +40,6 @@
         android:textStyle="italic"
         tools:ignore="RelativeOverlap" />
 
-    <ImageView
-        android:id="@+id/profile_page_follow_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/profile_page_username"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        app:srcCompat="@drawable/ic_star_outline"
-        android:contentDescription="@string/following_button_content_desc" />
-
     <TextView
         android:id="@+id/profile_page_organization"
         android:layout_width="wrap_content"

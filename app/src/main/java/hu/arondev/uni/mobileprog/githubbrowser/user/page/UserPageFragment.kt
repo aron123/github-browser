@@ -79,10 +79,6 @@ class UserPageFragment : Fragment() {
                     .error(R.drawable.ic_profile)
                     .into(profileImageView)
 
-            if (username == null) {
-                profile_page_follow_icon.visibility = View.INVISIBLE
-            }
-
             profile_page_username.text = user.login
             profile_page_realname.text = user.name
             profile_page_organization.text = user.company

@@ -45,12 +45,14 @@
         android:textSize="18sp"/>
 
     <ImageView
+        android:id="@+id/repo_page_follow_ic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         app:srcCompat="@drawable/ic_star_outline"
-        android:contentDescription="@string/follow_repo_icon_description"/>
+        android:contentDescription="@string/follow_repo_icon_description"
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/repo_desc"
