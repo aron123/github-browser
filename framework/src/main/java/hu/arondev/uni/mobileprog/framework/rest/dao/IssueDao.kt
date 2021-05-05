@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface IssueDao {
 
-    @GET("repos/{owner}/{repo}/issues?state=all")
+    @GET("repos/{owner}/{repo}/issues?state=all&sort=created&direction=desc")
     suspend fun getIssuesOfRepo(@Path("owner") owner: String, @Path("repo") repo: String): List<IssueEntity>
 
     @GET("repos/{owner}/{repo}/issues/{id}")

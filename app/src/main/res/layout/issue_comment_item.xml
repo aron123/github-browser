@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/issue_comment_profile_pic"
+        android:layout_width="@dimen/nav_profile_pic_width"
+        android:layout_height="@dimen/nav_profile_pic_height"
+        app:srcCompat="@drawable/ic_profile"
+        android:contentDescription="@string/user_profile_picture_desc"/>
+
+    <TextView
+        android:id="@+id/issue_comment_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/issue_comment_profile_pic"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="@string/default_username"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/issue_comment_created_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/updated_at" />
+
+    <TextView
+        android:id="@+id/issue_comment_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/issue_comment_profile_pic"
+        android:layout_below="@+id/issue_comment_username"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="@string/default_comment"/>
+
+</RelativeLayout>

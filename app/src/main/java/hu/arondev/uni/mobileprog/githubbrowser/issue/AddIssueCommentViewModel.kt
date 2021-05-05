@@ -1,7 +1,10 @@
 package hu.arondev.uni.mobileprog.githubbrowser.issue
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import hu.arondev.uni.mobileprog.framework.Interactors
+import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModel
 
-class AddIssueCommentViewModel : ViewModel() {
+class AddIssueCommentViewModel(application: Application, interactors: Interactors)
+    : GitHubViewModel(application, interactors) {
     // TODO: Implement the ViewModel
 }

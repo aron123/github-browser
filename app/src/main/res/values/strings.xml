@@ -31,6 +31,15 @@
     <string name="search_button_text">Search</string>
     <string name="username_search_hint">Search a username …</string>
     <string name="repo_search_hint">Search a repository …</string>
+    <string name="issue_number">#%d</string>
+    <string name="default_issue_title">Title of issue</string>
+    <string name="default_issue_state">(Open)</string>
+    <string name="issue_by">by</string>
+    <string name="default_comments_count">0 comments</string>
+    <string name="issue_state_closed">(Closed)</string>
+    <string name="issue_state_open">(Open)</string>
+    <string name="default_comment">Comment</string>
+    <string name="add_issue_comment_content_desc">Add new issue comment</string>
     <plurals name="profile_page_public_repositories">
         <item quantity="one">%d public repository</item>
         <item quantity="other">%d public repositories</item>
@@ -50,5 +59,9 @@
     <plurals name="repo_page_forks">
         <item quantity="one">%d fork</item>
         <item quantity="other">%d forks</item>
+    </plurals>
+    <plurals name="issue_comments">
+        <item quantity="one">%d comment</item>
+        <item quantity="other">%d comments</item>
     </plurals>
 </resources>

@@ -70,6 +70,14 @@ class RepoPageFragment : Fragment() {
             repo_owner.text = repo.owner.login
             repo_desc.text = repo.description
             repo_language.text = repo.language
+            repo_open_issues.text = resources.getQuantityString(
+                R.plurals.repo_page_open_issues,
+                repo.open_issues_count, repo.open_issues_count
+            )
+            repo_forks.text = resources.getQuantityString(
+                R.plurals.repo_page_forks,
+                repo.forks_count, repo.forks_count
+            )
         })
 
         viewModel.fileList.observe(this, { files ->
@@ -99,5 +107,6 @@ class RepoPageFragment : Fragment() {
                 viewModel.starRepo(username, repoName)
             }
         }
+        repo_open_issues.setOnClickListener { mainActivityDelegate.openIssueBrowsePage(username, repoName) }
     }
 }

@@ -16,6 +16,8 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.shape.CornerFamily
 import com.squareup.picasso.Picasso
+import hu.arondev.uni.mobileprog.githubbrowser.issue.IssueBrowseFragment
+import hu.arondev.uni.mobileprog.githubbrowser.issue.IssuePageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.repo.page.RepoPageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.repo.search.RepoSearchFragment
 import hu.arondev.uni.mobileprog.githubbrowser.user.page.UserPageFragment
@@ -97,6 +99,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction()
                 .replace(R.id.content, UserPageFragment.newInstance(user))
                 .commit()
+    }
+
+    override fun openIssueBrowsePage(user: String, repo: String) {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.content, IssueBrowseFragment.newInstance(user, repo))
+                .commit()
+    }
+
+    override fun openIssuePage(user: String, repo: String, issueNumber: Int) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, IssuePageFragment.newInstance(user, repo, issueNumber))
+            .commit()
     }
 
     override fun hideKeyboard() {
