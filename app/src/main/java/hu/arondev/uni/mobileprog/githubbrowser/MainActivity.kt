@@ -16,6 +16,8 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.shape.CornerFamily
 import com.squareup.picasso.Picasso
+import hu.arondev.uni.mobileprog.githubbrowser.issue.AddIssueCommentFragment
+import hu.arondev.uni.mobileprog.githubbrowser.issue.AddIssueFragment
 import hu.arondev.uni.mobileprog.githubbrowser.issue.IssueBrowseFragment
 import hu.arondev.uni.mobileprog.githubbrowser.issue.IssuePageFragment
 import hu.arondev.uni.mobileprog.githubbrowser.repo.page.RepoPageFragment
@@ -110,6 +112,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun openIssuePage(user: String, repo: String, issueNumber: Int) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.content, IssuePageFragment.newInstance(user, repo, issueNumber))
+            .commit()
+    }
+
+    override fun openAddIssuePage(user: String, repo: String) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, AddIssueFragment.newInstance(user, repo))
+            .commit()
+    }
+
+    override fun openAddIssueCommentPage(user: String, repo: String, issueNumber: Int) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, AddIssueCommentFragment.newInstance(user, repo, issueNumber))
             .commit()
     }
 

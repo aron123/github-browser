@@ -7,10 +7,10 @@
     android:layout_marginBottom="@dimen/activity_vertical_margin"
     android:layout_marginStart="@dimen/activity_horizontal_margin"
     android:layout_marginEnd="@dimen/activity_horizontal_margin"
-    tools:context=".issue.AddIssueCommentFragment">
+    tools:context=".issue.AddIssueFragment">
 
     <TextView
-        android:id="@+id/add_issue_comment_repo_owner"
+        android:id="@+id/add_issue_repo_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_username"
@@ -19,10 +19,10 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/add_issue_comment_owner_repo_separator"
+        android:id="@+id/add_issue_owner_repo_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/add_issue_comment_repo_owner"
+        android:layout_toEndOf="@+id/add_issue_repo_owner"
         android:layout_marginStart="16sp"
         android:layout_marginEnd="16sp"
         android:text="@string/owner_repo_separator"
@@ -31,22 +31,11 @@
         android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/add_issue_comment_repo_name"
+        android:id="@+id/add_issue_repo_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/add_issue_comment_owner_repo_separator"
+        android:layout_toEndOf="@+id/add_issue_owner_repo_separator"
         android:text="@string/default_repository_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/add_issue_comment_issue_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/add_issue_comment_repo_name"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/issue_number"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -54,23 +43,32 @@
         android:clickable="true"/>
 
     <EditText
-        android:id="@+id/add_issue_comment_body_input"
+        android:id="@+id/add_issue_title_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/add_issue_comment_repo_name"
+        android:layout_below="@+id/add_issue_repo_name"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:hint="@string/issue_title_input_placeholder"/>
+
+    <EditText
+        android:id="@+id/add_issue_body_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_issue_title_input"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:inputType="textMultiLine"
         android:lines="6"
         android:scrollbars="vertical"
-        android:hint="@string/add_issue_comment_placeholder" />
+        android:hint="@string/issue_input_placeholder" />
 
     <Button
-        android:id="@+id/add_issue_comment_button"
+        android:id="@+id/add_issue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/send_button_text"
-        android:layout_below="@+id/add_issue_comment_body_input"
+        android:layout_below="@+id/add_issue_body_input"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

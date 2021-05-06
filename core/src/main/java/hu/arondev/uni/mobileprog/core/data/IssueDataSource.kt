@@ -7,4 +7,6 @@ interface IssueDataSource {
     suspend fun getIssuesOfRepo(owner: String, repo: String): List<Issue>
     suspend fun getOneIssueOfRepo(owner: String, repo: String, id: Int): Issue
     suspend fun getCommentsOfIssue(owner: String, repo: String, id: Int): List<IssueComment>
+    suspend fun createIssue(owner: String, repo: String, issue: Issue): Issue
+    suspend fun createIssueComment(owner: String, repo: String, issueNumber: Int, issueComment: IssueComment)
 }

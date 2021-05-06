@@ -7,32 +7,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.snackbar.Snackbar
+import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
 import hu.arondev.uni.mobileprog.githubbrowser.R
-import kotlinx.android.synthetic.main.issue_browse_fragment.*
+import kotlinx.android.synthetic.main.add_issue_fragment.*
 import java.lang.ClassCastException
 import java.lang.RuntimeException
 
-class IssueBrowseFragment : Fragment() {
+class AddIssueFragment : Fragment() {
 
     companion object {
         enum class ArgumentKeys {
             USERNAME, REPONAME
         }
-        fun newInstance() = IssueBrowseFragment()
-        fun newInstance(username: String, repo: String): IssueBrowseFragment {
+        fun newInstance() = AddIssueFragment()
+        fun newInstance(username: String, repo: String): AddIssueFragment {
             val args = Bundle()
             args.putString(ArgumentKeys.USERNAME.toString(), username)
             args.putString(ArgumentKeys.REPONAME.toString(), repo)
 
-            val fragment = IssueBrowseFragment()
+            val fragment = AddIssueFragment()
             fragment.arguments = args
             return fragment
         }
     }
 
-    private lateinit var viewModel: IssueBrowseViewModel
+    private lateinit var viewModel: AddIssueViewModel
 
     private lateinit var mainActivityDelegate: MainActivityDelegate
 
@@ -50,35 +52,38 @@ class IssueBrowseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.issue_browse_fragment, container, false)
+        return inflater.inflate(R.layout.add_issue_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, GitHubViewModelFactory).get(IssueBrowseViewModel::class.java)
+        viewModel = ViewModelProvider(this, GitHubViewModelFactory).get(AddIssueViewModel::class.java)
 
-        val username = arguments?.getString(ArgumentKeys.USERNAME.toString())
-        val repoName = arguments?.getString(ArgumentKeys.REPONAME.toString())
+        val username = arguments?.getString(IssuePageFragment.Companion.ArgumentKeys.USERNAME.toString())
+        val repoName = arguments?.getString(IssuePageFragment.Companion.ArgumentKeys.REPONAME.toString())
 
         if (username == null || repoName == null) {
-            throw RuntimeException("Issue initialization failed: username and reponame can not be null")
+            throw RuntimeException("Can not initialize AddIssueFragment: parameters can not be null")
         }
 
-        issue_browse_repo_owner.text = username
-        issue_browse_repo_name.text = repoName
-        issue_browse_repo_name.setOnClickListener { mainActivityDelegate.openRepositoryPage(username, repoName) }
+        add_issue_repo_owner.text = username
+        add_issue_repo_name.text = repoName
 
-        viewModel.issues.observe(this) { issues ->
-            val adapter = IssueAdapter(context!!, issues) { issue ->
-                mainActivityDelegate.openIssuePage(username, repoName, issue.number)
+        viewModel.issueAdded.observe(this) { issue ->
+            mainActivityDelegate.hideKeyboard()
+            mainActivityDelegate.openIssuePage(username, repoName, issue.number)
+        }
+
+        add_issue_repo_name.setOnClickListener {
+            mainActivityDelegate.openRepositoryPage(username, repoName)
+        }
+
+        add_issue_button.setOnClickListener {
+            val issue: Issue = Issue().apply {
+                title = add_issue_title_input.text.toString()
+                body = add_issue_body_input.text.toString()
             }
-            issue_browse_recyclerview.adapter = adapter
-        }
-
-        viewModel.loadIssues(username, repoName)
-
-        issue_browse_fab.setOnClickListener {
-            mainActivityDelegate.openAddIssuePage(username, repoName)
+            viewModel.createIssue(username, repoName, issue)
         }
     }
 

@@ -34,7 +34,9 @@ class GitHubBrowserApplication : Application() {
                 GetOneUser(userRepository),
                 GetIssuesOfRepo(issueRepository),
                 GetOneIssueOfRepo(issueRepository),
-                GetCommentsOfIssue(issueRepository)
+                GetCommentsOfIssue(issueRepository),
+                CreateIssue(issueRepository),
+                CreateIssueComment(issueRepository)
             )
         )
     }

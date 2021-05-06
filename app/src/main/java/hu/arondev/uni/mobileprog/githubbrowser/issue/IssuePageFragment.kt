@@ -92,5 +92,9 @@ class IssuePageFragment : Fragment() {
         issue_page_repo_name.setOnClickListener {
             mainActivityDelegate.openRepositoryPage(username, repoName)
         }
+
+        issue_page_fab.setOnClickListener {
+            mainActivityDelegate.openAddIssueCommentPage(username, repoName, issueNumber)
+        }
     }
 }

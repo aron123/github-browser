@@ -39,7 +39,12 @@
     <string name="issue_state_closed">(Closed)</string>
     <string name="issue_state_open">(Open)</string>
     <string name="default_comment">Comment</string>
+    <string name="add_issue_content_desc">Add new issue</string>
     <string name="add_issue_comment_content_desc">Add new issue comment</string>
+    <string name="issue_input_placeholder">Write your issue here …</string>
+    <string name="issue_title_input_placeholder">Write issue title here …</string>
+    <string name="send_button_text">Send</string>
+    <string name="add_issue_comment_placeholder">Write your comment here …</string>
     <plurals name="profile_page_public_repositories">
         <item quantity="one">%d public repository</item>
         <item quantity="other">%d public repositories</item>

@@ -16,4 +16,6 @@ data class Interactors(
     val getIssuesOfRepo: GetIssuesOfRepo,
     val getOneIssueOfRepo: GetOneIssueOfRepo,
     val getCommentsOfIssue: GetCommentsOfIssue,
+    val createIssue: CreateIssue,
+    val createIssueComment: CreateIssueComment
 )

@@ -6,4 +6,6 @@ interface MainActivityDelegate {
     fun hideKeyboard()
     fun openIssueBrowsePage(user: String, repo: String)
     fun openIssuePage(user: String, repo: String, issueNumber: Int)
+    fun openAddIssuePage(user: String, repo: String)
+    fun openAddIssueCommentPage(user: String, repo: String, issueNumber: Int)
 }
