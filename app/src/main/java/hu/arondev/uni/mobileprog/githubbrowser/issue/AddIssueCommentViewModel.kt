@@ -16,7 +16,7 @@ class AddIssueCommentViewModel(application: Application, interactors: Interactor
     fun addIssueComment(owner: String, repo: String, issueNumber: Int, issueComment: IssueComment) {
         viewModelScope.launch {
             interactors.createIssueComment(owner, repo, issueNumber, issueComment)
-            issueCommentAdded.value = true
+            issueCommentAdded.postValue(true)
         }
     }
 }

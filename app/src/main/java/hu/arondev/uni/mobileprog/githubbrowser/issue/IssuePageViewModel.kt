@@ -16,13 +16,13 @@ class IssuePageViewModel(application: Application, interactors: Interactors)
 
     fun loadIssue(user: String, repo: String, issueNumber: Int) {
         viewModelScope.launch {
-            issue.value = interactors.getOneIssueOfRepo(user, repo, issueNumber)
+            issue.postValue(interactors.getOneIssueOfRepo(user, repo, issueNumber))
         }
     }
 
     fun loadComments(user: String, repo: String, issueNumber: Int) {
         viewModelScope.launch {
-            comments.value = interactors.getCommentsOfIssue(user, repo, issueNumber)
+            comments.postValue(interactors.getCommentsOfIssue(user, repo, issueNumber))
         }
     }
 }

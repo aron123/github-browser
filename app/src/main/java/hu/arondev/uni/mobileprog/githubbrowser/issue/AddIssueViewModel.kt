@@ -14,7 +14,7 @@ class AddIssueViewModel(application: Application, interactors: Interactors)
 
     fun createIssue(owner: String, repo: String, issue: Issue) {
         viewModelScope.launch {
-            issueAdded.value = interactors.createIssue(owner, repo, issue)
+            issueAdded.postValue(interactors.createIssue(owner, repo, issue))
         }
     }
 }

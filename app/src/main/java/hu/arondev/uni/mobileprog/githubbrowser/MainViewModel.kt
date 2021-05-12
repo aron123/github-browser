@@ -15,7 +15,7 @@ class MainViewModel(application: Application, interactors: Interactors)
     fun getCurrentUser() {
         viewModelScope.launch {
             val user = interactors.getCurrentUser()
-            currentUser.value = user
+            currentUser.postValue(user)
         }
     }
 }

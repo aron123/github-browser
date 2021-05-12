@@ -14,7 +14,7 @@ class RepoSearchViewModel(application: Application, interactors: Interactors)
 
     fun loadRepos(query: String) {
         viewModelScope.launch {
-            repos.value = interactors.searchReposByName(query, 100)
+            repos.postValue(interactors.searchReposByName(query, 100))
         }
     }
 }

@@ -16,14 +16,15 @@ class UserPageViewModel(application: Application, interactors: Interactors) : Gi
 
     fun loadUser(username: String?) {
         viewModelScope.launch {
-            user.value = if (username != null) interactors.getOneUser(username)
-                            else interactors.getCurrentUser()
+            user.postValue(
+                if (username != null) interactors.getOneUser(username) else interactors.getCurrentUser()
+            )
         }
     }
 
     fun loadRepositoriesOfUser(username: String) {
         viewModelScope.launch {
-            repositories.value = interactors.getReposOfUser(username)
+            repositories.postValue(interactors.getReposOfUser(username))
         }
     }
 }

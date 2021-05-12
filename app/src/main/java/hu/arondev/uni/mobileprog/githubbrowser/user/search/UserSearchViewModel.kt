@@ -15,7 +15,7 @@ class UserSearchViewModel(application: Application, interactors: Interactors)
 
     fun loadUsers(search: String) {
         viewModelScope.launch {
-            users.value = interactors.searchUsers(search)
+            users.postValue(interactors.searchUsers(search))
         }
     }
 

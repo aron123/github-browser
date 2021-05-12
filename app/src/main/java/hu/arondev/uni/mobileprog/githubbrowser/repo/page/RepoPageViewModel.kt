@@ -20,7 +20,7 @@ class RepoPageViewModel(application: Application, interactors: Interactors)
 
     fun loadRepo(username: String, repoName: String) {
         viewModelScope.launch {
-            repo.value = interactors.getOneRepositoryByFullName(username, repoName)
+            repo.postValue(interactors.getOneRepositoryByFullName(username, repoName))
         }
     }
 
@@ -37,7 +37,7 @@ class RepoPageViewModel(application: Application, interactors: Interactors)
                         this.path = StringUtil.getParentPath(path)
                     })
                 }
-                fileList.value = files
+                fileList.postValue(files)
             } catch (ex: HttpException) {
                 Log.e("REPO_PAGE_VIEWMODEL", ex.response().toString())
             }
@@ -46,21 +46,21 @@ class RepoPageViewModel(application: Application, interactors: Interactors)
 
     fun loadIsRepoStarred(username: String, repoName: String) {
         viewModelScope.launch {
-            isRepoStarred.value = interactors.isRepoStarred(username, repoName)
+            isRepoStarred.postValue(interactors.isRepoStarred(username, repoName))
         }
     }
 
     fun starRepo(username: String, repoName: String) {
         viewModelScope.launch {
             interactors.starRepo(username, repoName)
-            isRepoStarred.value = true
+            isRepoStarred.postValue(true)
         }
     }
 
     fun unstarRepo(username: String, repoName: String) {
         viewModelScope.launch {
             interactors.unstarRepo(username, repoName)
-            isRepoStarred.value = false
+            isRepoStarred.postValue(false)
         }
     }
 }

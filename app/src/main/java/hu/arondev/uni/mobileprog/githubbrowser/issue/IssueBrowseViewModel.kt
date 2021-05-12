@@ -14,7 +14,7 @@ class IssueBrowseViewModel(application: Application, interactors: Interactors)
 
     fun loadIssues(user: String, repo: String) {
         viewModelScope.launch {
-            issues.value = interactors.getIssuesOfRepo(user, repo)
+            issues.postValue(interactors.getIssuesOfRepo(user, repo))
         }
     }
 }
