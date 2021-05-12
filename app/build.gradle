@@ -45,7 +45,6 @@ dependencies {
     implementation commonDependencies.kotlinStdLib
     implementation applicationDependencies.appcompat
     implementation applicationDependencies.material
-    implementation applicationDependencies.glide
     implementation applicationDependencies.retrofit
     implementation applicationDependencies.picasso
     implementation applicationDependencies.constraintLayout
