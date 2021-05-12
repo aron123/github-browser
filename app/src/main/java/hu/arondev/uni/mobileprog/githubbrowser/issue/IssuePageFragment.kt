@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import hu.arondev.uni.mobileprog.core.domain.IssueComment
 import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
@@ -23,13 +24,12 @@ class IssuePageFragment : Fragment() {
         }
         fun newInstance() = IssuePageFragment()
         fun newInstance(username: String, repo: String, issueNumber: Int): IssuePageFragment {
-            val args = Bundle()
-            args.putString(ArgumentKeys.USERNAME.toString(), username)
-            args.putString(ArgumentKeys.REPONAME.toString(), repo)
-            args.putInt(ArgumentKeys.ISSUE_NUMBER.toString(), issueNumber)
-
             val fragment = IssuePageFragment()
-            fragment.arguments = args
+            fragment.arguments = bundleOf(
+                ArgumentKeys.USERNAME.toString() to username,
+                ArgumentKeys.REPONAME.toString() to repo,
+                ArgumentKeys.ISSUE_NUMBER.toString() to issueNumber
+            )
             return fragment
         }
     }

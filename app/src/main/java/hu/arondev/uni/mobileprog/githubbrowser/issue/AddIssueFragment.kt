@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import com.google.android.material.snackbar.Snackbar
 import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
@@ -24,12 +25,11 @@ class AddIssueFragment : Fragment() {
         }
         fun newInstance() = AddIssueFragment()
         fun newInstance(username: String, repo: String): AddIssueFragment {
-            val args = Bundle()
-            args.putString(ArgumentKeys.USERNAME.toString(), username)
-            args.putString(ArgumentKeys.REPONAME.toString(), repo)
-
             val fragment = AddIssueFragment()
-            fragment.arguments = args
+            fragment.arguments = bundleOf(
+                ArgumentKeys.USERNAME.toString() to username,
+                ArgumentKeys.REPONAME.toString() to repo
+            )
             return fragment
         }
     }

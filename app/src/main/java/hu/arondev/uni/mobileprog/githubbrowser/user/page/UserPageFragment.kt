@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -27,11 +28,8 @@ class UserPageFragment : Fragment() {
         fun newInstance() = UserPageFragment()
 
         fun newInstance(username: String): UserPageFragment {
-            val args = Bundle()
-            args.putString(ArgumentKeys.USERNAME.toString(), username)
-
             val fragment = UserPageFragment()
-            fragment.arguments = args
+            fragment.arguments = bundleOf(ArgumentKeys.USERNAME.toString() to username)
             return fragment
         }
     }
