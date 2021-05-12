@@ -2,7 +2,7 @@ package hu.arondev.uni.mobileprog.core.domain
 
 data class IssueComment(
     var author_association: String = "",
-    var body: String = "",
+    var body: String? = "",
     var created_at: String = "",
     var html_url: String = "",
     var id: Int = 0,
