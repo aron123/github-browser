@@ -37,10 +37,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
     def commonDependencies = rootProject.ext.common
     def applicationDependencies = rootProject.ext.mainApplication
     def testDependencies = rootProject.ext.unitTesting
@@ -52,6 +48,10 @@ dependencies {
     implementation applicationDependencies.glide
     implementation applicationDependencies.retrofit
     implementation applicationDependencies.picasso
+    implementation applicationDependencies.constraintLayout
+    implementation applicationDependencies.legacySupport
+    implementation applicationDependencies.liveData
+    implementation applicationDependencies.viewModel
 
     implementation project(':core')
     implementation project(':framework')
