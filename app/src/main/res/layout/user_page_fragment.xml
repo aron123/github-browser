@@ -20,7 +20,7 @@
         android:id="@+id/profile_page_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_username"
+        tools:text="@string/default_username"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_toEndOf="@+id/profile_page_picture"
@@ -32,7 +32,7 @@
         android:id="@+id/profile_page_realname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_real_name"
+        tools:text="@string/default_real_name"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="3dp"
         android:layout_toEndOf="@+id/profile_page_username"
@@ -44,7 +44,7 @@
         android:id="@+id/profile_page_organization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_organization"
+        tools:text="@string/default_organization"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_toEndOf="@+id/profile_page_picture"
         android:layout_below="@+id/profile_page_username"/>
@@ -53,7 +53,7 @@
         android:id="@+id/profile_page_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_location"
+        tools:text="@string/default_location"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_toEndOf="@+id/profile_page_picture"
         android:layout_below="@+id/profile_page_organization"/>
@@ -62,7 +62,7 @@
         android:id="@+id/profile_page_bio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_bio"
+        tools:text="@string/default_bio"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_toEndOf="@+id/profile_page_picture"
         android:layout_below="@+id/profile_page_location"
@@ -75,7 +75,7 @@
         android:layout_below="@+id/profile_page_picture"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/user_hierable"
+        tools:text="@string/user_hierable"
         android:textStyle="bold"
         android:textColor="@color/colorGreen" />
 
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_page_hireable"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_public_repositories"
+        tools:text="@string/default_public_repositories"
         android:textStyle="italic" />
 
     <TextView
@@ -95,7 +95,7 @@
         android:layout_below="@+id/profile_page_hireable"
         android:layout_toEndOf="@+id/profile_page_public_repos"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_followers"
+        tools:text="@string/default_followers"
         android:textStyle="italic" />
 
     <TextView
@@ -105,7 +105,7 @@
         android:layout_below="@+id/profile_page_hireable"
         android:layout_toEndOf="@id/profile_page_followers"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_followings"
+        tools:text="@string/default_followings"
         android:textStyle="italic"/>
 
     <androidx.recyclerview.widget.RecyclerView

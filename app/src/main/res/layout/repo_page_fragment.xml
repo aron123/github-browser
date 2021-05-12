@@ -15,7 +15,7 @@
         android:id="@+id/repo_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_username"
+        tools:text="@string/default_username"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/owner_repo_separator"
-        android:text="@string/default_repository_name"
+        tools:text="@string/default_repository_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         android:textSize="18sp"/>
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/repo_name"
         android:layout_marginTop="3sp"
-        android:text="@string/default_repository_description"
+        tools:text="@string/default_repository_description"
         android:textStyle="italic"/>
 
     <ImageView
@@ -79,7 +79,7 @@
         android:layout_toEndOf="@+id/repo_language_icon"
         android:layout_alignTop="@+id/repo_language_icon"
         android:layout_marginStart="3sp"
-        android:text="@string/default_language" />
+        tools:text="@string/default_language" />
 
     <TextView
         android:id="@+id/repo_open_issues"
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/repo_language"
         android:layout_marginTop="6sp"
-        android:text="@string/default_open_issues"
+        tools:text="@string/default_open_issues"
         android:textColor="@color/colorAccent"
         android:clickable="true" />
 
@@ -99,7 +99,7 @@
         android:layout_toEndOf="@+id/repo_open_issues"
         android:layout_marginTop="6sp"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_forks"/>
+        tools:text="@string/default_forks"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/repo_page_files_recyclerview"

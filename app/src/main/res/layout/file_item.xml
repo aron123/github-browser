@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
@@ -21,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/repo_file_dir_icon"
-        android:text="@string/default_filename"/>
+        tools:text="@string/default_filename"/>
 
     <TextView
         android:id="@+id/repo_filesize"
@@ -30,7 +31,7 @@
         android:layout_marginTop="6sp"
         android:layout_below="@+id/repo_filename"
         android:layout_toEndOf="@+id/repo_file_dir_icon"
-        android:text="@string/default_filesize" />
+        tools:text="@string/default_filesize" />
 
     <View
         android:layout_width="match_parent"

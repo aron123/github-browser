@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_header"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -30,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/default_username"
+        tools:text="@string/default_username"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:layout_toEndOf="@+id/profile_picture"
         android:layout_marginStart="@dimen/activity_horizontal_margin"/>
@@ -42,6 +43,6 @@
         android:layout_toEndOf="@+id/profile_picture"
         android:layout_below="@+id/username"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_organization"/>
+        tools:text="@string/default_organization"/>
 
 </RelativeLayout>

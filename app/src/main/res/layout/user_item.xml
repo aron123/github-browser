@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -24,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_below="@+id/user_search_profile_pic"
-        android:text="@string/default_username"
+        tools:text="@string/default_username"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="16sp"/>

@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -20,7 +21,7 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/issue_comment_profile_pic"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_username"
+        tools:text="@string/default_username"
         android:textStyle="bold"
         android:textSize="16sp"/>
 
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:text="@string/updated_at" />
+        tools:text="@string/updated_at" />
 
     <TextView
         android:id="@+id/issue_comment_content"
@@ -40,6 +41,6 @@
         android:layout_below="@+id/issue_comment_username"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_comment"/>
+        tools:text="@string/default_comment"/>
 
 </RelativeLayout>

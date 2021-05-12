@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="@string/default_issue_title"
+        tools:text="@string/default_issue_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/colorAccent"/>
 
@@ -24,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/issue_browse_title"
         android:layout_marginTop="3sp"
-        android:text="@string/issue_number"
+        tools:text="@string/issue_number"
         android:textStyle="bold"/>
 
     <TextView
@@ -45,13 +46,13 @@
         android:layout_below="@+id/issue_browse_title"
         android:layout_marginTop="3sp"
         android:layout_marginStart="3sp"
-        android:text="@string/default_username"/>
+        tools:text="@string/default_username"/>
 
     <TextView
         android:id="@+id/issue_browse_comments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_comments_count"
+        tools:text="@string/default_comments_count"
         android:layout_toEndOf="@+id/issue_browse_username"
         android:layout_below="@+id/issue_browse_title"
         android:layout_marginTop="3sp"
@@ -65,6 +66,6 @@
         android:layout_below="@id/issue_browse_title"
         android:layout_marginTop="3sp"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/default_issue_state"/>
+        tools:text="@string/default_issue_state"/>
 
 </RelativeLayout>

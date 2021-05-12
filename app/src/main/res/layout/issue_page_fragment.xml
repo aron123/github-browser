@@ -14,7 +14,7 @@
         android:id="@+id/issue_page_repo_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_username"
+        tools:text="@string/default_username"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         android:textSize="18sp" />
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/issue_page_owner_repo_separator"
-        android:text="@string/default_repository_name"
+        tools:text="@string/default_repository_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/issue_page_repo_name"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/issue_number"
+        tools:text="@string/issue_number"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         android:textSize="18sp"/>
