@@ -65,6 +65,13 @@ class RepoPageFragment : Fragment() {
             return
         }
 
+        val fileAdapter = FileAdapter { file ->
+            if (file.type == "dir") {
+                viewModel.loadRepoFiles(username, repoName, file.path)
+            }
+        }
+        repo_page_files_recyclerview.adapter = fileAdapter
+
         viewModel.repo.observe(this, { repo ->
             repo_name.text = repo.name
             repo_owner.text = repo.owner.login
@@ -80,14 +87,7 @@ class RepoPageFragment : Fragment() {
             )
         })
 
-        viewModel.fileList.observe(this, { files ->
-            val fileAdapter = FileAdapter(files) { file ->
-                if (file.type == "dir") {
-                    viewModel.loadRepoFiles(username, repoName, file.path)
-                }
-            }
-            repo_page_files_recyclerview.adapter = fileAdapter
-        })
+        viewModel.fileList.observe(this) { files -> fileAdapter.update(files) }
 
         viewModel.isRepoStarred.observe(this) { starred ->
             repo_page_follow_ic.setImageResource(

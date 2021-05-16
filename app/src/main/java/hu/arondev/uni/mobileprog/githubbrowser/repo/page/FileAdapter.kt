@@ -1,6 +1,5 @@
 package hu.arondev.uni.mobileprog.githubbrowser.repo.page
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import hu.arondev.uni.mobileprog.framework.util.StringUtil
 import hu.arondev.uni.mobileprog.githubbrowser.R
 import kotlinx.android.synthetic.main.file_item.view.*
 
-class FileAdapter(private val files: List<File> = listOf(),
+class FileAdapter(private val files: MutableList<File> = mutableListOf(),
                   private val itemClickListener: (File) -> Unit)
     : RecyclerView.Adapter<FileAdapter.ViewHolder>() {
 
@@ -45,4 +44,10 @@ class FileAdapter(private val files: List<File> = listOf(),
     }
 
     override fun getItemCount(): Int = files.size
+
+    fun update(files: List<File>) {
+        this.files.clear()
+        this.files.addAll(files)
+        notifyDataSetChanged()
+    }
 }

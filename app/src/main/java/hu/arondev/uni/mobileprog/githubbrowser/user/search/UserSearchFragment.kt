@@ -7,11 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.shape.CornerFamily
+import hu.arondev.uni.mobileprog.core.domain.User
 import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
 import hu.arondev.uni.mobileprog.githubbrowser.R
-import kotlinx.android.synthetic.main.user_item.*
 import kotlinx.android.synthetic.main.user_search_fragment.*
 import java.lang.ClassCastException
 
@@ -44,12 +43,12 @@ class UserSearchFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, GitHubViewModelFactory).get(UserSearchViewModel::class.java)
 
-        viewModel.users.observe(this) { users ->
-            val adapter = UserSearchAdapter(context!!, users) { user ->
-                mainActivityDelegate.openUserPage(user.login)
-            }
-            user_search_recyclerview.adapter = adapter
+        val userSearchAdapter = UserSearchAdapter(context!!) { user ->
+            mainActivityDelegate.openUserPage(user.login)
         }
+        user_search_recyclerview.adapter = userSearchAdapter
+
+        viewModel.users.observe(this) { users -> userSearchAdapter.update(users) }
 
         user_search_button.setOnClickListener {
             mainActivityDelegate.hideKeyboard()

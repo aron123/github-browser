@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.issue_comment_item.view.*
 
 class IssueCommentAdapter(
     private val context: Context,
-    private val issueComments: List<IssueComment> = listOf()) : RecyclerView.Adapter<IssueCommentAdapter.ViewHolder>() {
+    private val issueComments: MutableList<IssueComment> = mutableListOf())
+    : RecyclerView.Adapter<IssueCommentAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val profilePicImageView: ShapeableImageView = view.issue_comment_profile_pic
@@ -50,4 +51,10 @@ class IssueCommentAdapter(
     }
 
     override fun getItemCount(): Int = issueComments.size
+
+    fun update(issueComments: List<IssueComment>) {
+        this.issueComments.clear()
+        this.issueComments.addAll(issueComments)
+        notifyDataSetChanged()
+    }
 }

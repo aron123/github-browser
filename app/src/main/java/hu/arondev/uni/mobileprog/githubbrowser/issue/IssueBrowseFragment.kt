@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import hu.arondev.uni.mobileprog.core.domain.Issue
 import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
 import hu.arondev.uni.mobileprog.githubbrowser.R
@@ -68,12 +69,12 @@ class IssueBrowseFragment : Fragment() {
         issue_browse_repo_name.text = repoName
         issue_browse_repo_name.setOnClickListener { mainActivityDelegate.openRepositoryPage(username, repoName) }
 
-        viewModel.issues.observe(this) { issues ->
-            val adapter = IssueAdapter(context!!, issues) { issue ->
-                mainActivityDelegate.openIssuePage(username, repoName, issue.number)
-            }
-            issue_browse_recyclerview.adapter = adapter
+        val issueAdapter = IssueAdapter(context!!) { issue ->
+            mainActivityDelegate.openIssuePage(username, repoName, issue.number)
         }
+        issue_browse_recyclerview.adapter = issueAdapter
+
+        viewModel.issues.observe(this) { issues -> issueAdapter.update(issues) }
 
         viewModel.loadIssues(username, repoName)
 

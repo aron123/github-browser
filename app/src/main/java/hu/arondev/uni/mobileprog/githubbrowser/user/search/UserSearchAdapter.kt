@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.user_item.view.*
 
 class UserSearchAdapter(
         private val context: Context,
-        private val users: List<User> = listOf(),
+        private val users: MutableList<User> = mutableListOf(),
         private val itemClickListener: (User) -> Unit) : RecyclerView.Adapter<UserSearchAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -47,4 +47,10 @@ class UserSearchAdapter(
     }
 
     override fun getItemCount(): Int = users.size
+
+    fun update(users: List<User>) {
+        this.users.clear()
+        this.users.addAll(users)
+        notifyDataSetChanged()
+    }
 }

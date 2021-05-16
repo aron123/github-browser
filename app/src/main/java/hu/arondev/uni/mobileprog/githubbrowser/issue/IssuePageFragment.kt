@@ -71,8 +71,11 @@ class IssuePageFragment : Fragment() {
         issue_page_repo_name.text = repoName
         issue_page_issue_number.text = resources.getString(R.string.issue_number, issueNumber)
 
+        val issueCommentAdapter = IssueCommentAdapter(context!!)
+        issue_page_recyclerview.adapter = issueCommentAdapter
+
         viewModel.issue.observe(this) { issue ->
-            viewModel.loadComments(username, repoName, issueNumber)
+            viewModel.loadComments(username, repoName, issue.number)
         }
 
         viewModel.comments.observe(this) { issueComments ->
@@ -83,8 +86,7 @@ class IssuePageFragment : Fragment() {
                 body = issue.body
                 created_at = issue.created_at
             })
-            val adapter = IssueCommentAdapter(context!!, mutableIssueComments)
-            issue_page_recyclerview.adapter = adapter
+            issueCommentAdapter.update(mutableIssueComments)
         }
 
         viewModel.loadIssue(username, repoName, issueNumber)

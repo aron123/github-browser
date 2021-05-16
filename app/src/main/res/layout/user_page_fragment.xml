@@ -75,7 +75,7 @@
         android:layout_below="@+id/profile_page_picture"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        tools:text="@string/user_hierable"
+        android:text="@string/user_hierable"
         android:textStyle="bold"
         android:textColor="@color/colorGreen" />
 

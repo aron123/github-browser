@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.issue_item.view.*
 
 class IssueAdapter(
     private val context: Context,
-    private val issues: List<Issue> = listOf(),
+    private val issues: MutableList<Issue> = mutableListOf(),
     private val itemClickListener: (Issue) -> Unit) : RecyclerView.Adapter<IssueAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -49,4 +49,10 @@ class IssueAdapter(
     }
 
     override fun getItemCount(): Int = issues.size
+
+    fun update(issues: List<Issue>) {
+        this.issues.clear()
+        this.issues.addAll(issues)
+        notifyDataSetChanged()
+    }
 }

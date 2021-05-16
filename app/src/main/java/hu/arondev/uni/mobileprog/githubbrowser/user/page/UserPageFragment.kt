@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import hu.arondev.uni.mobileprog.core.domain.Repo
 import hu.arondev.uni.mobileprog.githubbrowser.GitHubViewModelFactory
 import hu.arondev.uni.mobileprog.githubbrowser.MainActivityDelegate
 import hu.arondev.uni.mobileprog.githubbrowser.R
@@ -58,17 +59,17 @@ class UserPageFragment : Fragment() {
         viewModel = ViewModelProvider(this, GitHubViewModelFactory).get(UserPageViewModel::class.java)
         val username = getArguments()?.getString(ArgumentKeys.USERNAME.toString())
 
+        val repositoryAdapter = RepositoryAdapter(context!!) { repo ->
+            mainActivityDelegate.openRepositoryPage(repo.owner.login, repo.name)
+        }
+        user_page_repo_recycler_view.adapter = repositoryAdapter
+
         val profileImageView = profile_page_picture
         profileImageView!!.shapeAppearanceModel.toBuilder()
                 .setAllCorners(CornerFamily.ROUNDED, resources.getDimension(R.dimen.nav_profile_pic_radius))
                 .build().also { profileImageView.shapeAppearanceModel = it }
 
-        viewModel.repositories.observe(this, { repos ->
-            val repositoryAdapter = RepositoryAdapter(context!!, repos) { repo ->
-                mainActivityDelegate.openRepositoryPage(repo.owner.login, repo.name)
-            }
-            user_page_repo_recycler_view.adapter = repositoryAdapter
-        })
+        viewModel.repositories.observe(this, { repos -> repositoryAdapter.update(repos) })
 
         viewModel.user.observe(this, { user ->
             Picasso.get()
@@ -99,7 +100,6 @@ class UserPageFragment : Fragment() {
             Log.e("USER_PAGE_FRAGMENT", ex.stackTraceToString())
             Snackbar.make(view!!, R.string.user_load_error, Snackbar.LENGTH_LONG).show()
         }
-
     }
 
 }

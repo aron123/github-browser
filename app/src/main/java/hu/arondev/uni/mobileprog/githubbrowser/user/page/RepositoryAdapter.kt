@@ -1,7 +1,6 @@
 package hu.arondev.uni.mobileprog.githubbrowser.user.page
 
 import android.content.Context
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,10 @@ import hu.arondev.uni.mobileprog.core.domain.Repo
 import hu.arondev.uni.mobileprog.framework.util.AgoFormatter
 import hu.arondev.uni.mobileprog.githubbrowser.R
 import kotlinx.android.synthetic.main.repo_item.view.*
-import java.text.SimpleDateFormat
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
 
 class RepositoryAdapter(
         private val context: Context,
-        private val repos: List<Repo> = listOf(),
+        private val repos: MutableList<Repo> = mutableListOf(),
         private val itemClickListener: (Repo) -> Unit)
     : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
 
@@ -44,4 +40,10 @@ class RepositoryAdapter(
     }
 
     override fun getItemCount(): Int = repos.size
+
+    fun update(repos: List<Repo>) {
+        this.repos.clear()
+        this.repos.addAll(repos)
+        notifyDataSetChanged()
+    }
 }
