@@ -16,4 +16,19 @@ data class Issue(
     var updated_at: String = "",
     var url: String = "",
     var user: Owner = Owner()
-)
+): Comparable<Issue> {
+
+    companion object {
+        private const val OPEN_STATE = "open"
+    }
+
+    override fun compareTo(other: Issue): Int {
+        if (this.state == OPEN_STATE && other.state != OPEN_STATE) {
+            return 1
+        } else if (this.state != OPEN_STATE && other.state == OPEN_STATE) {
+            return -1
+        }
+
+        return this.updated_at.compareTo(other.updated_at)
+    }
+}

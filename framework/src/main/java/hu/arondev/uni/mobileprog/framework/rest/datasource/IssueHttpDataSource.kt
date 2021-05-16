@@ -17,7 +17,7 @@ class IssueHttpDataSource(context: Context) : IssueDataSource {
     private val issueCommentConverter = Mappers.getMapper(IssueCommentConverter::class.java)
 
     override suspend fun getIssuesOfRepo(owner: String, repo: String): List<Issue>
-        = issueConverter.convertToDomain(issueDao.getIssuesOfRepo(owner, repo))
+        = issueConverter.convertToDomain(issueDao.getIssuesOfRepo(owner, repo)).sorted().reversed()
 
     override suspend fun getOneIssueOfRepo(owner: String, repo: String, id: Int): Issue
         = issueConverter.convertToDomain(issueDao.getOneIssueOfRepo(owner, repo, id))
@@ -32,7 +32,7 @@ class IssueHttpDataSource(context: Context) : IssueDataSource {
     }
 
     override suspend fun createIssueComment(
-        owner: String,repo: String,
+        owner: String, repo: String,
         issueNumber: Int, issueComment: IssueComment
     ) {
         val body = issueCommentConverter.convertToCreateEntity(issueComment)
