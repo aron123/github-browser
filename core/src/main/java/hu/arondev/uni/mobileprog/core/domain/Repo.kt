@@ -24,7 +24,7 @@ data class Repo(
     var open_issues_count: Int = 0,
     var owner: Owner = Owner(),
     var `private`: Boolean = false,
-    var pushed_at: String = "",
+    var pushed_at: String? = "",
     var size: Int = 0,
     var stargazers_count: Int = 0,
     var subscribers_count: Int = 0,
